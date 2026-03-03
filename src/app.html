@@ -1,0 +1,27 @@
+<!-- src/app.html -->
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0c10" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <!-- Title -->
+  <title>JSMail</title>
+  <meta name="description" content="Private Mail System" />
+
+  %sveltekit.head%
+</head>
+
+<body class="bg-[#0b0c10] text-white antialiased">
+  <div id="app">%sveltekit.body%</div>
+</body>
+</html>

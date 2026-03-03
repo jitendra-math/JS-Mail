@@ -1,0 +1,39 @@
+# .github/workflows/deploy.yml
+
+name: Deploy JSMail to Vercel
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Install deps
+        run: npm install
+
+      - name: 🏗 Build project
+        run: npm run build
+
+      # Optional: Vercel CLI deploy via GitHub Action
+      # Only if you want GitHub auto deploy instead of Vercel Git integration
+      - name: 🚀 Deploy to Vercel
+        if: ${{ env.VERCEL_TOKEN != '' }}
+        run: |
+          npm install -g vercel
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+          vercel build --prod --token=$VERCEL_TOKEN
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
