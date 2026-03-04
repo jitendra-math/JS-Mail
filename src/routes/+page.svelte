@@ -5,8 +5,10 @@
   import { goto } from "$app/navigation";
   import { auth } from "$lib/stores/auth";
   import Loader from "$lib/components/ui/Loader.svelte";
+import { auth } from "$lib/stores/auth"
 
-  let $auth;
+$: user = $auth.user
+
   const unsub = auth.subscribe(v => $auth = v);
 
   onMount(async () => {
