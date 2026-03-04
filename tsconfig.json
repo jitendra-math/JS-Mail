@@ -1,24 +1,13 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    "allowJs": false,
-    "checkJs": false,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
+    "module": "esnext",
+    "target": "es2020",
     "moduleResolution": "bundler",
+    "strict": true,
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "$lib/*": ["src/lib/*"],
-      "$lib": ["src/lib"],
-      "$components/*": ["src/lib/components/*"],
-      "$stores/*": ["src/lib/stores/*"],
-      "$utils/*": ["src/lib/utils/*"],
-      "$server/*": ["src/lib/server/*"]
+      "$lib/*": ["src/lib/*"]
     }
   }
 }
