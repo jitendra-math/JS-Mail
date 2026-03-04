@@ -16,16 +16,16 @@
 
   onMount(async () => {
     const ok = await auth.check();
-    if (!ok) goto("/login");
+    if (!ok) {
+      goto("/login");
+    }
   });
 </script>
 
 <div class="flex h-screen bg-[#0b0c10] text-white overflow-hidden">
 
-  <!-- Sidebar -->
   <Sidebar />
 
-  <!-- Main -->
   <div class="flex-1 flex flex-col">
 
     <Header />
