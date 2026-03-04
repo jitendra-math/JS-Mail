@@ -4,20 +4,13 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
   import { auth } from "$lib/stores/auth";
+  import { ui } from "$lib/stores/ui";
 
   import Sidebar from "$lib/components/layout/Sidebar.svelte";
   import Header from "$lib/components/layout/Header.svelte";
   import BottomNav from "$lib/components/layout/BottomNav.svelte";
   import ComposeModal from "$lib/components/mail/ComposeModal.svelte";
   import DashboardStats from "$lib/components/stats/DashboardStats.svelte";
-
-  import { ui } from "$lib/stores/ui";
-
-  let $auth;
-  let $ui;
-
-  const unsubAuth = auth.subscribe(v => $auth = v);
-  const unsubUI = ui.subscribe(v => $ui = v);
 
   onMount(async () => {
     const ok = await auth.check();
