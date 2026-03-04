@@ -4,6 +4,9 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
 
+  import { auth } from "$lib/stores/auth";
+  import { ui } from "$lib/stores/ui";
+
   import Header from "$lib/components/layout/Header.svelte";
   import Sidebar from "$lib/components/layout/Sidebar.svelte";
   import BottomNav from "$lib/components/layout/BottomNav.svelte";
@@ -11,14 +14,9 @@
   import DashboardStats from "$lib/components/stats/DashboardStats.svelte";
   import ComposeModal from "$lib/components/mail/ComposeModal.svelte";
 
-  import { auth } from "$lib/stores/auth";
-  import { ui } from "$lib/stores/ui";
-
   onMount(async () => {
     const ok = await auth.check();
-    if (!ok) {
-      goto("/login");
-    }
+    if (!ok) goto("/login");
   });
 </script>
 
@@ -40,4 +38,5 @@
 </div>
 
 <BottomNav />
+
 <ComposeModal open={$ui.composeOpen} />
