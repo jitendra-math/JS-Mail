@@ -6,9 +6,6 @@
   import MailList from "$lib/components/mail/MailList.svelte";
   import MailView from "$lib/components/mail/MailView.svelte";
 
-  let $mails;
-  const unsub = mails.subscribe(v => $mails = v);
-
   onMount(() => {
     mails.setFolder("sent");
   });
